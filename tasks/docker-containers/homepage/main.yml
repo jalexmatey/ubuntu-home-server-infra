@@ -1,0 +1,21 @@
+---
+- name: Create the homepage config directory.
+  ansible.builtin.file:
+    path: ./homepage/config
+    state: directory
+    mode: '0755'
+
+
+- name: Deploy homepage Docker container.
+  community.docker.docker_container:
+    name: Homepage
+    image: ghcr.io/gethomepage/homepage:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./homepage/config:/app/config # Make sure your local config directory exists
+      - /var/run/docker.sock:/var/run/docker.sock:ro # optional, for docker integrations
+    env:
+      PUID: '1000'
+      PGID: '1000'
+    restart_policy: unless-stopped

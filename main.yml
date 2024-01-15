@@ -1,0 +1,20 @@
+---
+- name: Home Server Configurations
+  hosts: servers
+
+  vars_files:
+    - vars/system_vars.yml
+
+  roles:
+    - role: robertdebock.update
+      update_reboot: false
+      become: true
+      tags: ['update']
+
+  tasks:
+    - name: Configure Homepage
+      ansible.builtin.import_tasks: tasks/docker-containers/homepage/main.yml
+      tags: ['homepage']
+    - name: Reboot server
+      ansible.builtin.import_tasks: tasks/ubuntu/reboot.yml
+      tags: ['never', 'reboot']

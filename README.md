@@ -66,7 +66,8 @@ You will need a SSH key on the target server setting up, you can use `ssh-copy-i
 
 1. Clone or download this repository to your local drive.
 2. Copy `./example.inventory.yml` to `./inventory.yml` and edit.
-3. Run `ansible-playbook ./main.yml --ask-become-pass`.
+3. Run `ansible-galaxy install --role-file requirements.yml`.
+4. Run `ansible-playbook ./main.yml --ask-become-pass`.
 
 ## Usage
 
