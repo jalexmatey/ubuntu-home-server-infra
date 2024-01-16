@@ -1,6 +1,6 @@
 ---
-- name: Update Home servers
-  hosts: servers
+- name: Deploy Docker Containers to servers
+  hosts: docker_hosts
 
   vars_files:
     - vars/system_vars.yml
