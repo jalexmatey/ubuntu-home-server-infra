@@ -1,5 +1,5 @@
 ---
-- name: Home Server Configurations
+- name: Update Home servers
   hosts: servers
 
   vars_files:
@@ -12,9 +12,6 @@
       tags: ['update']
 
   tasks:
-    - name: Configure Homepage
-      ansible.builtin.import_tasks: tasks/docker-containers/homepage/main.yml
-      tags: ['homepage']
     - name: Reboot server
       ansible.builtin.import_tasks: tasks/ubuntu/reboot.yml
       tags: ['never', 'reboot']
