@@ -32,6 +32,8 @@
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
+  - [Updating the servers](#updating-the-servers)
+  - [Deploying the docker containers to a server](#deploying-the-docker-containers-to-a-server)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
   - [Creating A Pull Request](#creating-a-pull-request)
@@ -65,12 +67,19 @@ You will need a SSH key on the target server setting up, you can use `ssh-copy-i
 ### Installation
 
 1. Clone or download this repository to your local drive.
-2. Copy `./example.inventory.yml` to `./inventory.yml` and edit.
-3. Run `ansible-playbook ./main.yml --ask-become-pass`.
+2. Edit `./inventory` as you see fit.
+3. Copy `vars/example.secret_vars.yml` to `vars/sercret_vars.yml` and update.
+4. Run `ansible-galaxy install --role-file requirements.yml`.
 
 ## Usage
 
-TBA
+### Updating the servers
+
+1. Run `ansible-playbook ./update.yml`.
+
+### Deploying the docker containers to a server
+
+1. Run `ansible-playbook ./docker-containers.yml`.
 
 ## Roadmap
 

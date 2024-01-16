@@ -1,0 +1,44 @@
+---
+- name: Create the homepage config directory.
+  ansible.builtin.file:
+    path: "{{ HOMEPAGE_CONFIG_PATH }}"
+    state: directory
+    mode: '0755'
+
+- name: Deploy homepage Docker container.
+  community.docker.docker_container:
+    name: Homepage
+    image: ghcr.io/gethomepage/homepage:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - "{{ HOMEPAGE_CONFIG_PATH }}:/app/config" # Make sure your local config directory exists
+      - /var/run/docker.sock:/var/run/docker.sock:ro # optional, for docker integrations
+    env:
+      PUID: '1000'
+      PGID: '1000'
+    restart_policy: unless-stopped
+
+- name: Copy Homepage settings configuration file
+  ansible.builtin.template:
+    src: templates/settings.yaml.j2
+    dest: "{{ HOMEPAGE_CONFIG_PATH }}/settings.yaml"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: u=rw,g=rw,o=r
+
+- name: Copy Homepage widgets configuration file
+  ansible.builtin.template:
+    src: templates/widgets.yaml.j2
+    dest: "{{ HOMEPAGE_CONFIG_PATH }}/widgets.yaml"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: u=rw,g=rw,o=r
+
+- name: Copy Homepage service configuration file
+  ansible.builtin.template:
+    src: templates/services.yaml.j2
+    dest: "{{ HOMEPAGE_CONFIG_PATH }}/services.yaml"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: u=rw,g=rw,o=r

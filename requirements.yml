@@ -1,3 +1,9 @@
 ---
+roles:
+  - name: robertdebock.update
+    version: "3.1.7" # as of 2024/01/15
+
 collections:
-  - community.docker
+  - name: community.docker
+    version: ">=3.4.11"
+    source: https://galaxy.ansible.com

@@ -1,0 +1,17 @@
+---
+- name: Update Home servers
+  hosts: servers
+
+  vars_files:
+    - vars/system_vars.yml
+
+  roles:
+    - role: robertdebock.update
+      update_reboot: false
+      become: true
+      tags: ['update']
+
+  tasks:
+    - name: Reboot server
+      ansible.builtin.import_tasks: tasks/ubuntu/reboot.yml
+      tags: ['never', 'reboot']

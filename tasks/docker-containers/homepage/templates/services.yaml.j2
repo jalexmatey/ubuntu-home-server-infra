@@ -1,0 +1,62 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/services
+
+- Monitoring:
+    - Portainer:
+        icon: portainer.png
+        href: http://homelab1.jalexmatey.co.uk:9000/
+        description: Docker monitoring
+        widget:
+          type: portainer
+          url: http://homelab1.jalexmatey.co.uk:9000
+          env: 2
+          key: {{ PORTAINER_API_KEY }}
+    - PiAlert:
+        icon: pi-alert.png
+        href: http://homelab1.jalexmatey.co.uk:20211/
+        description: Network monitoring
+        widget:
+          type: pialert
+          url: http://homelab1.jalexmatey.co.uk:20211
+
+- Media:
+    - Plex:
+        icon: plex.png
+        href: http://homelab1.jalexmatey.co.uk:32400/
+        description: Self-hosted "Netflix"
+        widget:
+          type: plex
+          url: http://homelab1.jalexmatey.co.uk:32400
+          key: {{ PLEX_API_KEY }}
+    - qBittorrent:
+        icon: qbittorrent.png
+        href: http://homelab1.jalexmatey.co.uk:8080/
+        description: To download Linux ISOs
+        widget:
+          type: qbittorrent
+          url: http://homelab1.jalexmatey.co.uk:8080
+          username: {{ QBITTORRENT_USERNAME }}
+          password: {{ QBITTORRENT_PASSWORD }}
+    - Sonarr:
+        icon: sonarr.png
+        href: http://homelab1.jalexmatey.co.uk:8989/
+        widget:
+          type: sonarr
+          url: http://homelab1.jalexmatey.co.uk:8989
+          key: {{ SONARR_API_KEY }}
+          enableQueue: false
+    - Radarr:
+        icon: radarr.png
+        href: http://homelab1.jalexmatey.co.uk:7878/
+        widget:
+          type: radarr
+          url: http://homelab1.jalexmatey.co.uk:7878
+          key: {{ RADARR_API_KEY }}
+          enableQueue: false
+    - Jackett:
+        icon: jackett.png
+        href: http://homelab1.jalexmatey.co.uk:9117/
+        widget:
+          type: jackett
+          url: http://homelab1.jalexmatey.co.uk:9117
