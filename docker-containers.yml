@@ -4,6 +4,8 @@
 
   vars_files:
     - vars/system_vars.yml
+    - vars/docker_container_vars.yml
+    - vars/secret_vars.yml
 
   tasks:
     - name: Configure Homepage
