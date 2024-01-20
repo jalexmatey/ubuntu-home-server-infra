@@ -1,7 +1,7 @@
 ---
 - name: Create the homepage config directory.
   ansible.builtin.file:
-    path: "{{ HOMEPAGE_CONFIG_PATH }}"
+    path: "{{ homepage_config_path }}"
     state: directory
     mode: '0755'
 
@@ -12,7 +12,7 @@
     ports:
       - "3000:3000"
     volumes:
-      - "{{ HOMEPAGE_CONFIG_PATH }}:/app/config" # Make sure your local config directory exists
+      - "{{ homepage_config_path }}:/app/config" # Make sure your local config directory exists
       - /var/run/docker.sock:/var/run/docker.sock:ro # optional, for docker integrations
     env:
       PUID: '1000'
@@ -22,7 +22,7 @@
 - name: Copy Homepage settings configuration file
   ansible.builtin.template:
     src: templates/settings.yaml.j2
-    dest: "{{ HOMEPAGE_CONFIG_PATH }}/settings.yaml"
+    dest: "{{ homepage_config_path }}/settings.yaml"
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: u=rw,g=rw,o=r
@@ -30,7 +30,7 @@
 - name: Copy Homepage widgets configuration file
   ansible.builtin.template:
     src: templates/widgets.yaml.j2
-    dest: "{{ HOMEPAGE_CONFIG_PATH }}/widgets.yaml"
+    dest: "{{ homepage_config_path }}/widgets.yaml"
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: u=rw,g=rw,o=r
@@ -38,7 +38,7 @@
 - name: Copy Homepage service configuration file
   ansible.builtin.template:
     src: templates/services.yaml.j2
-    dest: "{{ HOMEPAGE_CONFIG_PATH }}/services.yaml"
+    dest: "{{ homepage_config_path }}/services.yaml"
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: u=rw,g=rw,o=r

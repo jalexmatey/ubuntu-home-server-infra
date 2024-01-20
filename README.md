@@ -52,6 +52,10 @@ Why setup an Ubuntu server with IaC?:
 * I don't need to remember every thing I have done.
 * It's fun!
 
+Software that is installed and configured using this repo:
+* [Homepage](https://gethomepage.dev/latest/)
+* [Jellyfin](https://jellyfin.org/)
+
 ## Built With
 
 * [Ansible](https://www.ansible.com/)
