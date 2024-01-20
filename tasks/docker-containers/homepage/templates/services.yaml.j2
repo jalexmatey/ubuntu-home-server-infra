@@ -11,7 +11,7 @@
           type: portainer
           url: http://homelab1.jalexmatey.co.uk:9000
           env: 2
-          key: {{ PORTAINER_API_KEY }}
+          key: {{ portainer_api_key }}
     - PiAlert:
         icon: pi-alert.png
         href: http://homelab1.jalexmatey.co.uk:20211/
@@ -27,7 +27,7 @@
         widget:
           type: jellyfin
           url: http://homelab1.jalexmatey.co.uk:8096
-          key: {{ JELLYFIN_API_KEY }}
+          key: {{ jellyfin_api_key }}
           enableBlocks: true
           enableNowPlaying: true
     - qBittorrent:
@@ -37,15 +37,15 @@
         widget:
           type: qbittorrent
           url: http://homelab1.jalexmatey.co.uk:8080
-          username: {{ QBITTORRENT_USERNAME }}
-          password: {{ QBITTORRENT_PASSWORD }}
+          username: {{ qbittorrent_username }}
+          password: {{ qbittorrent_password }}
     - Sonarr:
         icon: sonarr.png
         href: http://homelab1.jalexmatey.co.uk:8989/
         widget:
           type: sonarr
           url: http://homelab1.jalexmatey.co.uk:8989
-          key: {{ SONARR_API_KEY }}
+          key: {{ sonarr_api_key }}
           enableQueue: false
     - Radarr:
         icon: radarr.png
@@ -53,7 +53,7 @@
         widget:
           type: radarr
           url: http://homelab1.jalexmatey.co.uk:7878
-          key: {{ RADARR_API_KEY }}
+          key: {{ radarr_api_key }}
           enableQueue: false
     - Jackett:
         icon: jackett.png
@@ -68,4 +68,4 @@
         widget:
           type: plex
           url: http://homelab1.jalexmatey.co.uk:32400
-          key: {{ PLEX_API_KEY }}
+          key: {{ plex_api_key }}

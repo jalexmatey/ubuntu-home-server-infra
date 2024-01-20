@@ -7,13 +7,13 @@
 
 - name: Create the Jellyfin config directory.
   ansible.builtin.file:
-    path: "{{ JELLYFIN_PATH }}/config"
+    path: "{{ jellyfin_path }}/config"
     state: directory
     mode: '0755'
 
 - name: Create the Jellyfin cache directory.
   ansible.builtin.file:
-    path: "{{ JELLYFIN_PATH }}/cache"
+    path: "{{ jellyfin_path }}/cache"
     state: directory
     mode: '0755'
 
@@ -25,6 +25,6 @@
     network_mode: host
     volumes:
       - "{{ media_dir }}:/media"
-      - "{{ JELLYFIN_PATH }}/config:/config"
-      - "{{ JELLYFIN_PATH }}/cache:/cache"
+      - "{{ jellyfin_path }}/config:/config"
+      - "{{ jellyfin_path }}/cache:/cache"
     restart_policy: unless-stopped
