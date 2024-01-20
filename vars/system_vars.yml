@@ -1,2 +1,3 @@
 ---
 username: jalex
+media_dir: "/home/{{ username }}/plex_media"

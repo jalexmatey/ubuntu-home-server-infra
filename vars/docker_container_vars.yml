@@ -1,3 +1,4 @@
 ---
 ### Homepage
 HOMEPAGE_CONFIG_PATH: ./homepage/config
+JELLYFIN_PATH: ./jellyfin

@@ -11,3 +11,6 @@
     - name: Configure Homepage
       ansible.builtin.import_tasks: tasks/docker-containers/homepage/main.yml
       tags: ['homepage']
+    - name: Configure Jellyfin
+      ansible.builtin.import_tasks: tasks/docker-containers/jellyfin/main.yml
+      tags: ['jellyfin']

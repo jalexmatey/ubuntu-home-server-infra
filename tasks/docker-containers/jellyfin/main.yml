@@ -1,0 +1,30 @@
+---
+- name: Create Media directories.
+  ansible.builtin.file:
+    path: "{{ media_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Create the Jellyfin config directory.
+  ansible.builtin.file:
+    path: "{{ JELLYFIN_PATH }}/config"
+    state: directory
+    mode: '0755'
+
+- name: Create the Jellyfin cache directory.
+  ansible.builtin.file:
+    path: "{{ JELLYFIN_PATH }}/cache"
+    state: directory
+    mode: '0755'
+
+- name: Deploy Jellyfin Docker container.
+  community.docker.docker_container:
+    name: Jellyfin
+    image: jellyfin/jellyfin
+    user: 1000:1000
+    network_mode: host
+    volumes:
+      - "{{ media_dir }}:/media"
+      - "{{ JELLYFIN_PATH }}/config:/config"
+      - "{{ JELLYFIN_PATH }}/cache:/cache"
+    restart_policy: unless-stopped
