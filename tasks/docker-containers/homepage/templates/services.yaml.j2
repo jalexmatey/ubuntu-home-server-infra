@@ -21,14 +21,15 @@
           url: http://homelab1.jalexmatey.co.uk:20211
 
 - Media:
-    - Plex:
-        icon: plex.png
-        href: http://homelab1.jalexmatey.co.uk:32400/
-        description: Self-hosted "Netflix"
+    - jellyfin:
+        icon: jellyfin.png
+        href: http://homelab1.jalexmatey.co.uk:8096
         widget:
-          type: plex
-          url: http://homelab1.jalexmatey.co.uk:32400
-          key: {{ PLEX_API_KEY }}
+          type: jellyfin
+          url: http://homelab1.jalexmatey.co.uk:8096
+          key: {{ JELLYFIN_API_KEY }}
+          enableBlocks: true
+          enableNowPlaying: true
     - qBittorrent:
         icon: qbittorrent.png
         href: http://homelab1.jalexmatey.co.uk:8080/
@@ -60,3 +61,11 @@
         widget:
           type: jackett
           url: http://homelab1.jalexmatey.co.uk:9117
+    - Plex:
+        icon: plex.png
+        href: http://homelab1.jalexmatey.co.uk:32400/
+        description: Self-hosted "Netflix"
+        widget:
+          type: plex
+          url: http://homelab1.jalexmatey.co.uk:32400
+          key: {{ PLEX_API_KEY }}
