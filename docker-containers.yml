@@ -14,3 +14,6 @@
     - name: Configure Jellyfin
       ansible.builtin.import_tasks: tasks/docker-containers/jellyfin/main.yml
       tags: ['jellyfin']
+    - name: Configure Jackett
+      ansible.builtin.import_tasks: tasks/docker-containers/jackett/main.yml
+      tags: ['jackett']
