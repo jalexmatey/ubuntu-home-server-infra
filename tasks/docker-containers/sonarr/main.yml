@@ -1,0 +1,23 @@
+---
+- name: Create the Sonarr config directory.
+  ansible.builtin.file:
+    path: "{{ sonarr_path }}/"
+    state: directory
+    mode: '0755'
+
+- name: Deploy Sonarr Docker container.
+  community.docker.docker_container:
+    name: sonarr
+    image: lscr.io/linuxserver/sonarr:latest
+    ports:
+      - '8989:8989'
+    volumes:
+      - '{{ sonarr_path }}:/config'
+      - '{{ media_dir }}/Media/TV:/tv'
+      - '{{ media_dir }}/downloads:/downloads'
+    env:
+      PUID: '1000'
+      PGID: '1000'
+      TZ: 'Europe/London'
+    network_mode: bridge
+    restart_policy: unless-stopped

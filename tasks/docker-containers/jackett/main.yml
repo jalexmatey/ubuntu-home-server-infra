@@ -1,0 +1,22 @@
+---
+- name: Create the Jackett config directory.
+  ansible.builtin.file:
+    path: "{{ jackett_path }}/"
+    state: directory
+    mode: '0755'
+
+- name: Deploy Jackett Docker container.
+  community.docker.docker_container:
+    name: jackett
+    image: lscr.io/linuxserver/jackett:latest
+    ports:
+      - '9117:9117'
+    volumes:
+      - '{{ jackett_path }}:/config'
+      - '{{ media_dir }}/downloads:/downloads'
+    env:
+      PUID: '1000'
+      PGID: '1000'
+      TZ: 'Europe/London'
+    network_mode: bridge
+    restart_policy: unless-stopped

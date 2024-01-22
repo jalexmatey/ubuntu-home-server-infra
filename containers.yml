@@ -1,0 +1,40 @@
+---
+- name: Deploy Containers to servers
+  hosts: docker_hosts
+
+  vars_files:
+    - vars/system_vars.yml
+    - vars/docker_container_vars.yml
+    - vars/secret_vars.yml
+
+  tasks:
+    - name: Deploy Portainer Container
+      ansible.builtin.import_tasks: tasks/docker-containers/portainer/main.yml
+      tags: ['portainer']
+    - name: Deploy Watchtower Container
+      ansible.builtin.import_tasks: tasks/docker-containers/watchtower/main.yml
+      tags: ['watchtower']
+    - name: Deploy PiAlert Container
+      ansible.builtin.import_tasks: tasks/docker-containers/pi-alert/main.yml
+      tags: ['pialert']
+    - name: Deploy Homepage Container
+      ansible.builtin.import_tasks: tasks/docker-containers/homepage/main.yml
+      tags: ['homepage']
+    - name: Deploy Jellyfin Container
+      ansible.builtin.import_tasks: tasks/docker-containers/jellyfin/main.yml
+      tags: ['jellyfin']
+    - name: Deploy Jackett Container
+      ansible.builtin.import_tasks: tasks/docker-containers/jackett/main.yml
+      tags: ['jackett']
+    - name: Deploy Radarr Container
+      ansible.builtin.import_tasks: tasks/docker-containers/radarr/main.yml
+      tags: ['radarr']
+    - name: Deploy Sonarr Container
+      ansible.builtin.import_tasks: tasks/docker-containers/sonarr/main.yml
+      tags: ['sonarr']
+    - name: Deploy qBittorrent Container
+      ansible.builtin.import_tasks: tasks/docker-containers/qbittorrent-vpn/main.yml
+      tags: ['qbittorrent']
+    - name: Deploy Backup Script for arr stack
+      ansible.builtin.import_tasks: tasks/ubuntu/backup/arr_backup.yml
+      tags: ['backup']
