@@ -1,0 +1,27 @@
+---
+- name: Create the qbittorrent config directory.
+  ansible.builtin.file:
+    path: "{{ qbittorent_path }}/"
+    state: directory
+    mode: '0755'
+
+- name: Deploy qbittorrent Docker container.
+  community.docker.docker_container:
+    name: qbittorent
+    image: markusmcnugen/qbittorrentvpn
+    ports:
+      - "8080:8080"
+      - '8999:8999'
+      - '8999:8999/udp'
+    volumes:
+      - '{{ qbittorent_path }}:/config'
+      - '{{ media_dir }}/downloads:/downloads'
+    env:
+      VPN_ENABLED: 'yes'
+      LAN_NETWORK: '192.168.1.0/24'
+      NAME_SERVERS: '8.8.8.8,8.8.4.4'
+      VPN_USERNAME: '{{ vpn_username }}'
+      VPN_PASSWORD: '{{ vpn_password }}'
+    restart_policy: always
+    network_mode: bridge
+    privileged: true
