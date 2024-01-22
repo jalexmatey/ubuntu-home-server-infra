@@ -1,3 +1,5 @@
 ---
 username: jalex
 media_dir: "/home/{{ username }}/plex_media"
+backup_scripts_path: "/home/{{ username }}"
+gdrive_version: "3.9.0"

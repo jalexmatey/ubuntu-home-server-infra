@@ -2,7 +2,7 @@
 ### Config paths
 homepage_config_path: ./homepage/config
 jellyfin_path: ./jellyfin
-radarr_path: ./radarr-data
+radarr_path: "/home/{{ username }}/radarr-data"
 qbittorent_path: ./qbittorent-config
 jackett_path: ./jackett-data
-sonarr_path: ./sonarr-data
+sonarr_path: "/home/{{ username }}/sonarr-data"

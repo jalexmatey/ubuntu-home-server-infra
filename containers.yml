@@ -26,3 +26,6 @@
     - name: Deploy qBittorrent Container
       ansible.builtin.import_tasks: tasks/docker-containers/qbittorrent-vpn/main.yml
       tags: ['qbittorrent']
+    - name: Deploy Backup Script for arr stack
+      ansible.builtin.import_tasks: tasks/ubuntu/backup.yml
+      tags: ['backup']
