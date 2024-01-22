@@ -1,0 +1,17 @@
+---
+- name: Deploy Radarr Docker container.
+  community.docker.docker_container:
+    name: radarr
+    image: lscr.io/linuxserver/radarr:latest
+    ports:
+      - '7878:7878'
+    volumes:
+      - './radarr-data:/config'
+      - '{{ media_dir }}/Media/Movies:/movies'
+      - '{{ media_dir }}/downloads:/downloads'
+    env:
+      PUID: '1000'
+      PGID: '1000'
+      TZ: 'Europe/London'
+    network_mode: bridge
+    restart_policy: unless-stopped

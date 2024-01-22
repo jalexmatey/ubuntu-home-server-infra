@@ -1,5 +1,5 @@
 ---
-- name: Deploy Docker Containers to servers
+- name: Deploy Containers to servers
   hosts: docker_hosts
 
   vars_files:
@@ -8,12 +8,15 @@
     - vars/secret_vars.yml
 
   tasks:
-    - name: Configure Homepage
+    - name: Deploy Homepage Container
       ansible.builtin.import_tasks: tasks/docker-containers/homepage/main.yml
       tags: ['homepage']
-    - name: Configure Jellyfin
+    - name: Deploy Jellyfin Container
       ansible.builtin.import_tasks: tasks/docker-containers/jellyfin/main.yml
       tags: ['jellyfin']
-    - name: Configure Jackett
+    - name: Deploy Jackett Container
       ansible.builtin.import_tasks: tasks/docker-containers/jackett/main.yml
       tags: ['jackett']
+    - name: Deploy Radarr Container
+      ansible.builtin.import_tasks: tasks/docker-containers/radarr/main.yml
+      tags: ['radarr']
