@@ -12,4 +12,5 @@
       PUID: '1000'
       PGID: '1000'
       TZ: 'Europe/London'
+    network_mode: bridge
     restart_policy: unless-stopped
