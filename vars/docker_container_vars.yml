@@ -6,3 +6,4 @@ radarr_path: "/home/{{ username }}/radarr-data"
 qbittorent_path: ./qbittorent-config
 jackett_path: ./jackett-data
 sonarr_path: "/home/{{ username }}/sonarr-data"
+pialert_path: "/home/{{ username }}/pialert"

@@ -14,6 +14,9 @@
     - name: Deploy Watchtower Container
       ansible.builtin.import_tasks: tasks/docker-containers/watchtower/main.yml
       tags: ['watchtower']
+    - name: Deploy PiAlert Container
+      ansible.builtin.import_tasks: tasks/docker-containers/pi-alert/main.yml
+      tags: ['pialert']
     - name: Deploy Homepage Container
       ansible.builtin.import_tasks: tasks/docker-containers/homepage/main.yml
       tags: ['homepage']
