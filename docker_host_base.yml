@@ -1,0 +1,11 @@
+---
+- name: Configure Docker Host systems
+  hosts: docker_hosts
+
+  vars_files:
+    - vars/system_vars.yml
+
+  tasks:
+    - name: Install Docker
+      ansible.builtin.import_tasks: tasks/ubuntu/docker_install/main.yml
+      tags: ['docker_install']
