@@ -6,6 +6,16 @@
     - vars/system_vars.yml
 
   tasks:
+    - name: Set up Ubuntu
+      ansible.builtin.import_tasks: tasks/ubuntu/base/main.yml
+      tags: ['base']
     - name: Install Docker
       ansible.builtin.import_tasks: tasks/ubuntu/docker_install/main.yml
       tags: ['docker_install']
+
+  handlers:
+    - name: Restart SSH daemon
+      ansible.builtin.service:
+        name: sshd
+        state: restarted
+      become: true
