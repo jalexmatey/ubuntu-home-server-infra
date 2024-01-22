@@ -8,6 +8,12 @@
     - vars/secret_vars.yml
 
   tasks:
+    - name: Deploy Portainer Container
+      ansible.builtin.import_tasks: tasks/docker-containers/portainer/main.yml
+      tags: ['portainer']
+    - name: Deploy Watchtower Container
+      ansible.builtin.import_tasks: tasks/docker-containers/watchtower/main.yml
+      tags: ['watchtower']
     - name: Deploy Homepage Container
       ansible.builtin.import_tasks: tasks/docker-containers/homepage/main.yml
       tags: ['homepage']

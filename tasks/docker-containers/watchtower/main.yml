@@ -1,0 +1,12 @@
+---
+- name: Deploy watchtower container.
+  community.docker.docker_container:
+    name: watchtower
+    image: containrrr/watchtower:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 43200
+    env:
+      WATCHTOWER_CLEANUP: 'true'
+    network_mode: bridge
+    restart_policy: always
