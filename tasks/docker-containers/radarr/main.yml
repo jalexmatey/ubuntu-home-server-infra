@@ -1,4 +1,10 @@
 ---
+- name: Create the Radarr config directory.
+  ansible.builtin.file:
+    path: "{{ radarr_path }}/"
+    state: directory
+    mode: '0755'
+
 - name: Deploy Radarr Docker container.
   community.docker.docker_container:
     name: radarr
@@ -6,7 +12,7 @@
     ports:
       - '7878:7878'
     volumes:
-      - './radarr-data:/config'
+      - '{{ radarr_path }}/:/config'
       - '{{ media_dir }}/Media/Movies:/movies'
       - '{{ media_dir }}/downloads:/downloads'
     env:

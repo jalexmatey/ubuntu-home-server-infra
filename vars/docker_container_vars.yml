@@ -1,4 +1,7 @@
 ---
-### Homepage
+### Config paths
 homepage_config_path: ./homepage/config
 jellyfin_path: ./jellyfin
+radarr_path: ./radarr-data
+qbittorent_path: ./qbittorent-config
+jackett_path: ./jackett-data
