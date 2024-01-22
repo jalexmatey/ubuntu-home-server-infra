@@ -20,6 +20,9 @@
     - name: Deploy Radarr Container
       ansible.builtin.import_tasks: tasks/docker-containers/radarr/main.yml
       tags: ['radarr']
+    - name: Deploy Sonarr Container
+      ansible.builtin.import_tasks: tasks/docker-containers/sonarr/main.yml
+      tags: ['sonarr']
     - name: Deploy qBittorrent Container
       ansible.builtin.import_tasks: tasks/docker-containers/qbittorrent-vpn/main.yml
       tags: ['qbittorrent']

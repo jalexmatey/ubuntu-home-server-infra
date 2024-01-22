@@ -5,3 +5,4 @@ jellyfin_path: ./jellyfin
 radarr_path: ./radarr-data
 qbittorent_path: ./qbittorent-config
 jackett_path: ./jackett-data
+sonarr_path: ./sonarr-data
