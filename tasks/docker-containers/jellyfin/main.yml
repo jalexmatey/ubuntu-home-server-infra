@@ -22,6 +22,10 @@
     name: Jellyfin
     image: jellyfin/jellyfin
     user: 1000:1000
+    groups:
+      - "{{ render_id }}"
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
     network_mode: host
     volumes:
       - "{{ media_dir }}:/media"
