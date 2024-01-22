@@ -33,7 +33,7 @@
   - [Installation](#installation)
 - [Usage](#usage)
   - [Updating the servers](#updating-the-servers)
-  - [Deploying the docker containers to a server](#deploying-the-docker-containers-to-a-server)
+  - [Deploying the containers to a server](#deploying-the-containers-to-a-server)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
   - [Creating A Pull Request](#creating-a-pull-request)
@@ -81,9 +81,9 @@ You will need a SSH key on the target server setting up, you can use `ssh-copy-i
 
 1. Run `ansible-playbook ./update.yml`.
 
-### Deploying the docker containers to a server
+### Deploying the containers to a server
 
-1. Run `ansible-playbook ./docker-containers.yml`.
+1. Run `ansible-playbook ./containers.yml`.
 
 ## Roadmap
 
