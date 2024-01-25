@@ -2,6 +2,8 @@
 roles:
   - name: robertdebock.update
     version: "3.1.7" # as of 2024/01/15
+  - name: geerlingguy.docker
+    version: "7.0.2" # as of 2024/01/25
 
 collections:
   - name: community.docker
