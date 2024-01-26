@@ -17,7 +17,7 @@
     env:
       PUID: '1000'
       PGID: '1000'
-    network_mode: bridge
+    network_mode: "{{ docker_network }}"
     restart_policy: unless-stopped
 
 - name: Copy Homepage settings configuration file

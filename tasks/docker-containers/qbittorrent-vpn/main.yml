@@ -23,5 +23,5 @@
       VPN_USERNAME: '{{ vpn_username }}'
       VPN_PASSWORD: '{{ vpn_password }}'
     restart_policy: always
-    network_mode: bridge
+    network_mode: "{{ docker_network }}"
     privileged: true
