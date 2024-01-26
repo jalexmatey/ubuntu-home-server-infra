@@ -9,5 +9,5 @@
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portatiner_data:/data
-    network_mode: bridge
+    network_mode: "{{ docker_network }}"
     restart_policy: always

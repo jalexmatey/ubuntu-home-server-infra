@@ -8,5 +8,5 @@
     command: --interval 43200
     env:
       WATCHTOWER_CLEANUP: 'true'
-    network_mode: bridge
+    network_mode: "{{ docker_network }}"
     restart_policy: always
