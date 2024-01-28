@@ -1,0 +1,11 @@
+---
+- name: Deploy uptime-kuma container.
+  community.docker.docker_container:
+    name: uptime-kuma
+    image: louislam/uptime-kuma:1
+    ports:
+      - "3001:3001/tcp"
+    volumes:
+      - '{{ uptimekuma_path }}:/app/data'
+    network_mode: "{{ docker_network }}"
+    restart_policy: unless-stopped
