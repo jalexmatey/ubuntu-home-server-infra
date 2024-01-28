@@ -7,6 +7,7 @@ qbittorent_path: ./qbittorent-config
 jackett_path: ./jackett-data
 sonarr_path: "/home/{{ username }}/sonarr-data"
 pialert_path: "/home/{{ username }}/pialert"
+uptimekuma_path: "/home/{{ username }}/uptime-kuma"
 
 ### MISC
 render_id: "109" # Result of `getent group render | cut -d: -f3` on the host

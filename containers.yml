@@ -41,3 +41,6 @@
     - name: Deploy Backup Script for arr stack
       ansible.builtin.import_tasks: tasks/ubuntu/backup/arr_backup.yml
       tags: ['backup']
+    - name: Deploy Uptime Kuma Container
+      ansible.builtin.import_tasks: tasks/docker-containers/uptime-kuma/main.yml
+      tags: ['uptime_kuma']
