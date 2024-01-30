@@ -1,0 +1,13 @@
+---
+- name: Configure Docker Host systems
+  hosts: docker_hosts
+
+  vars_files:
+    - vars/system_vars.yml
+    - vars/docker_container_vars.yml
+    - vars/secret_vars.yml
+
+  tasks:
+    - name: Deploy Frigate container
+      ansible.builtin.import_tasks: tasks/docker-containers/frigate/main.yml
+      tags: ['frigate']

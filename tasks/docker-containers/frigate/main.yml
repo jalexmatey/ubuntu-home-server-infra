@@ -1,0 +1,43 @@
+---
+- name: Create the frigate config directory.
+  ansible.builtin.file:
+    path: "/home/{{ username }}/frigate/config"
+    state: directory
+    mode: '0755'
+
+- name: Copy config.yml file
+  ansible.builtin.template:
+    src: templates/config.yml.j2
+    dest: "/home/{{ username }}/frigate/config/config.yml"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: u=rw,g=rw,o=r
+
+- name: Deploy Frigate container.
+  community.docker.docker_container:
+    name: frigate
+    image: ghcr.io/blakeblackshear/frigate:stable
+    ports:
+      - "5000:5000"
+      - "8554:8554" # RTSP feeds
+      - "8555:8555/tcp" # WebRTC over tcp
+      - "8555:8555/udp" # WebRTC over udp
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /home/{{ username }}/frigate/config:/config
+      - /mnt/HDD:/media/frigate
+      - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
+        target: /tmp/cache
+        tmpfs:
+          size: 1000000000
+    shm_size: "64MB"
+    devices:
+      - /dev/dri/renderD128 # for intel hwaccel, needs to be updated for your hardware
+    network_mode: "{{ docker_network }}"
+    env:
+      FRIGATE_RTSP_PASSWORD: "password"
+    restart_policy: unless-stopped
+
+# services:
+#   frigate:
+#     privileged: true # this may not be necessary for all setups
