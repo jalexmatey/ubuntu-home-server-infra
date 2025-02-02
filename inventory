@@ -1,5 +1,5 @@
 [servers]
-homelab1 ansible_host=192.168.1.3 ansible_user="{{ username }}" ansible_connection=ssh ansible_port=22
+homelab1 ansible_host=192.168.1.37 ansible_user="{{ username }}" ansible_connection=ssh ansible_port=22
 
 [docker_hosts]
-homelab1 ansible_host=192.168.1.3 ansible_user="{{ username }}" ansible_connection=ssh ansible_port=22
+homelab1 ansible_host=192.168.1.37 ansible_user="{{ username }}" ansible_connection=ssh ansible_port=22

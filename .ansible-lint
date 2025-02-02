@@ -2,3 +2,6 @@ skip_list:
   - package-latest  # Package installs should not use latest.
   - yaml[line-length]
   - yaml[comments]
+
+exclude_paths:
+  - .ansible

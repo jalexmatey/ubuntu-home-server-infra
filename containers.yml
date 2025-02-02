@@ -44,3 +44,6 @@
     - name: Deploy Uptime Kuma Container
       ansible.builtin.import_tasks: tasks/docker-containers/uptime-kuma/main.yml
       tags: ['uptime_kuma']
+    - name: Deploy Readarr Container
+      ansible.builtin.import_tasks: tasks/docker-containers/readarr/main.yml
+      tags: ['readarr']
