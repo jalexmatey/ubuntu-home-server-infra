@@ -1,1 +1,3 @@
 vars/secret_vars.yml
+.idea/
+.ansible

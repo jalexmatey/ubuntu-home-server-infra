@@ -1,0 +1,23 @@
+---
+- name: Create the readarr config directory.
+  ansible.builtin.file:
+    path: "{{ readarr_path }}/"
+    state: directory
+    mode: '0755'
+
+- name: Deploy Readarr Docker container.
+  community.docker.docker_container:
+    name: readarr
+    image: lscr.io/linuxserver/readarr:develop
+    ports:
+      - '8787:8787'
+    volumes:
+      - '{{ readarr_path }}:/config'
+      - '{{ media_dir }}/media/books:/books'
+      - '{{ media_dir }}/downloads:/downloads'
+    env:
+      PUID: '1000'
+      PGID: '1000'
+      TZ: 'Europe/London'
+    network_mode: "{{ docker_network }}"
+    restart_policy: unless-stopped
