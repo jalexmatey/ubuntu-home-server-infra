@@ -1,0 +1,23 @@
+---
+- name: Create the kavita config directory.
+  ansible.builtin.file:
+    path: "{{ kavita_path }}/"
+    state: directory
+    mode: '0755'
+
+- name: Deploy Kavita Docker container.
+  community.docker.docker_container:
+    name: kavita
+    image: lscr.io/linuxserver/kavita:latest
+    ports:
+      - '5000:5000'
+    volumes:
+      - '{{ kavita_path }}:/config'
+      - '{{ media_dir }}/media/books:/data'
+    env:
+      PUID: '1000'
+      PGID: '1000'
+      TZ: 'Europe/London'
+      DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: 'true'
+    network_mode: "{{ docker_network }}"
+    restart_policy: unless-stopped

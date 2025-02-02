@@ -9,6 +9,7 @@ sonarr_path: "/home/{{ username }}/sonarr-data"
 pialert_path: "/home/{{ username }}/pialert"
 uptimekuma_path: "/home/{{ username }}/uptime-kuma"
 readarr_path: "/home/{{ username }}/readarr"
+kavita_path: "/home/{{ username }}/kavita"
 
 ### MISC
 render_id: "109" # Result of `getent group render | cut -d: -f3` on the host
