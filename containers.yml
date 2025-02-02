@@ -47,3 +47,6 @@
     - name: Deploy Readarr Container
       ansible.builtin.import_tasks: tasks/docker-containers/readarr/main.yml
       tags: ['readarr']
+    - name: Deploy Kavita Container
+      ansible.builtin.import_tasks: tasks/docker-containers/kavita/main.yml
+      tags: ['kavita']
