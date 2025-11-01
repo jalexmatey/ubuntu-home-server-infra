@@ -1,0 +1,11 @@
+---
+- name: Deploy actual container.
+  community.docker.docker_container:
+    name: actual
+    image: actualbudget/actual-server:latest
+    ports:
+      - 5006:5006
+    volumes:
+      - actual_data:/data
+    network_mode: "{{ docker_network }}"
+    restart_policy: unless-stopped
