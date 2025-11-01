@@ -1,0 +1,8 @@
+---
+- name: Deploy it-tools Docker container.
+  community.docker.docker_container:
+    name: it-tools
+    image: sharevb/it-tools:latest
+    ports:
+      - 8081:8080/tcp
+    restart_policy: unless-stopped
